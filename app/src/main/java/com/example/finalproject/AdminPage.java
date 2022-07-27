@@ -3,7 +3,6 @@ package com.example.finalproject;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -118,6 +117,7 @@ public class AdminPage extends AppCompatActivity {
         }
         else if(user_privilege.equals("Admin") && UserInfo.privilege.equals("Admin")){
             showDialog("Only SuperAdmin can delete Admins.");
+            delete.setText("");
         }
         else{
 
@@ -147,6 +147,9 @@ public class AdminPage extends AppCompatActivity {
         }
         else if(user_privilege.equals("Admin") && UserInfo.privilege.equals("Admin")){
             showDialog("Only SuperAdmin can update Admins.");
+            updateold.setText("");
+            updatenew.setText("");
+            newpass.setText("");
         }
         else
         {

@@ -7,8 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class DbAdapter {
     DbHelper myhelper;
@@ -94,37 +92,6 @@ public class DbAdapter {
         return buffer.toString();
     }
 
-//    public void findUser(String username, String userpassword)
-//    {
-////        String TABLE_NAME = "Users";
-//        SQLiteDatabase db  = myhelper.getReadableDatabase();
-////        String[] columns = {DbHelper.PRIVILEGE, DbHelper.NAME,DbHelper.PASSWORD};
-//        Cursor cursor = db.rawQuery("SELECT  * FROM TABLE_NAME WHERE NAME = ? AND PASSWORD = ?", new String[] {username,userpassword});
-////        List<String> userdata = new ArrayList<String>();
-////        while (cursor.moveToNext())   {
-////            @SuppressLint("Range") String privilege =cursor.getString(cursor.getColumnIndex(DbHelper.PRIVILEGE));
-////            @SuppressLint("Range") String name =cursor.getString(cursor.getColumnIndex(DbHelper.NAME));
-////            @SuppressLint("Range") String  password =cursor.getString(cursor.getColumnIndex(DbHelper.PASSWORD));
-////            userdata.add(privilege);
-////            userdata.add(name);
-////            userdata.add(password);
-////        }
-//        if(cursor.moveToFirst()){
-//            do{
-//                String privilege = cursor.getString(1);
-//                String name =cursor.getString(2);
-//                String password =cursor.getString(3);
-//
-//                UserInfo.privilege = privilege;
-//                UserInfo.username = name;
-//                UserInfo.password = password;
-//            } while (cursor.moveToFirst());
-//
-//        } else{
-//            //
-//        }
-//    }
-
     static class DbHelper extends SQLiteOpenHelper
     {
         private static final String DATABASE_NAME = "LoginDatabase";    // Database Name
@@ -163,8 +130,4 @@ public class DbAdapter {
             }
         }
     }
-
-
-
-
 }
