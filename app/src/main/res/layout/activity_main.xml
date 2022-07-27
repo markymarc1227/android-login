@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/finalproj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:layout_marginBottom="26dp"
+        android:text="FINAL PROJECT LOGIN SYSTEM"
+        android:textStyle="bold|italic"
+        android:textSize="23sp" />
+
+    <TextView
+        android:id="@+id/usertext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/finalproj"
+        android:layout_alignStart="@id/finalproj"
+        android:layout_centerInParent="true"
+        android:padding="5dp"
+        android:text="Username: "
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/user_edit"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/finalproj"
+        android:layout_alignBaseline="@id/usertext"
+        android:layout_toRightOf="@+id/usertext" />
+
+    <TextView
+        android:id="@+id/passtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usertext"
+        android:layout_alignStart="@id/finalproj"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:text="Password:"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/pass_edit"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_edit"
+        android:layout_toRightOf="@+id/passtext"
+        android:layout_alignBaseline="@id/passtext"
+        android:layout_alignStart="@id/user_edit"
+        android:inputType="textPassword"
+        />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pass_edit"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="LOGIN" />
+
+</RelativeLayout>
