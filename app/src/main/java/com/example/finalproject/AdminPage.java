@@ -12,7 +12,8 @@ public class AdminPage extends AppCompatActivity {
     EditText name, pass, updateold, updatenew, newpass, delete;
     DbAdapter helper;
     RadioButton admin_btn;
-    String usertype = null;
+    String usertype = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class AdminPage extends AppCompatActivity {
         if(UserInfo.privilege.equals("Admin")){
             admin_btn.setEnabled(false);
         }
+
     }
 
     public void onRadioButtonClicked(View view) {

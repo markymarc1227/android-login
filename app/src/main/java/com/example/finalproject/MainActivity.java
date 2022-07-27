@@ -8,9 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     EditText username, password;
@@ -32,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
+                Boolean userExists = helper.fetchUser(user, pass);
                 if (user.equals("admin") && pass.equals("admin")){
                     UserInfo.username = user;
                     UserInfo.password = pass;
@@ -39,30 +37,27 @@ public class MainActivity extends AppCompatActivity {
                     Intent in = new Intent(view.getContext(), AdminPage.class);
                     startActivity(in);
                     finish();
-                } else {
-//                    List<String> userdata = helper.findUser(user,pass);
-                    Boolean userExists = helper.fetchUser(user, pass);
-                    if(userExists){
-                        UserInfo.username = user;
-                        UserInfo.password = pass;
-                        UserInfo.privilege = helper.checkPrivilege(user, pass);
-                         if (UserInfo.privilege.equals("Admin") ){
-                            Intent in = new Intent(view.getContext(), AdminPage.class);
-                            startActivity(in);
-                            finish();
-                        }
-                        else if (UserInfo.privilege.equals("User")){
-                            Intent in = new Intent(view.getContext(), UserInfo.class);
-                            startActivity(in);
-                            finish();
-                        }
-                        else {
-                             ToastNotif.message(getApplicationContext(),"User was found!");
-                         }
-                    } else {
-                        ToastNotif.message(getApplicationContext(),"Invalid Credentials");
-                    }
+                } else if (userExists){
+                    UserInfo.username = user;
+                    UserInfo.password = pass;
+                    UserInfo.privilege = helper.checkPrivilege(user, pass);
+                    if (UserInfo.privilege.equals("Admin") ){
 
+                        Intent in = new Intent(view.getContext(), AdminPage.class);
+                        startActivity(in);
+                        finish();
+                    }
+                    else if (UserInfo.privilege.equals("User")){
+                        Intent in = new Intent(view.getContext(), UserPage.class);
+                        startActivity(in);
+                        finish();
+                    }
+                    else {
+                        ToastNotif.message(getApplicationContext(),"User was found!");
+                    }
+                }
+                else {
+                    ToastNotif.message(getApplicationContext(),"Invalid Credentials");
                 }
                 username.setText("");
                 password.setText("");
