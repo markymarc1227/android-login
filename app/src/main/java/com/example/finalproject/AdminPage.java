@@ -153,16 +153,13 @@ public class AdminPage extends AppCompatActivity {
             int a= helper.updateName( up_oldname, up_newname, up_newpass);
             if(a<=0)
             {
-                ToastNotif.message(getApplicationContext(),"UNSUCCESSFUL");
-                updateold.setText("");
-                updatenew.setText("");
-                newpass.setText("");
-            } else {
                 ToastNotif.message(getApplicationContext(),"FAILED TO UPDATE");
-                updateold.setText("");
-                updatenew.setText("");
-                newpass.setText("");
+            } else {
+                ToastNotif.message(getApplicationContext(),"UPDATE SUCCESSFUL");
             }
+            updateold.setText("");
+            updatenew.setText("");
+            newpass.setText("");
         }
     }
     public void admin_signout(View view) {
