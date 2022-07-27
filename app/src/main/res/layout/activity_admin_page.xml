@@ -189,7 +189,6 @@
         android:layout_alignParentLeft="true"
         android:layout_marginStart="7dp"
         android:layout_marginLeft="7dp"
-        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="New Password"
         android:inputType="textPersonName"

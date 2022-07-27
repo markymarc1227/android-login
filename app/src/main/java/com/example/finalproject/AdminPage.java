@@ -118,9 +118,9 @@ public class AdminPage extends AppCompatActivity {
         String u1 = updateold.getText().toString();
         String u2 = updatenew.getText().toString();
         String u3 = newpass.getText().toString();
-        if(u1.isEmpty() || u2.isEmpty())
+        if(u1.isEmpty() || u2.isEmpty() || u3.isEmpty())
         {
-            ToastNotif.message(getApplicationContext(),"Enter Data");
+            ToastNotif.message(getApplicationContext(),"Enter Complete Data");
         }
         else
         {
@@ -134,6 +134,7 @@ public class AdminPage extends AppCompatActivity {
             } else {
                 ToastNotif.message(getApplicationContext(),"Updated");
                 updateold.setText("");
+                updatenew.setText("");
                 newpass.setText("");
             }
         }

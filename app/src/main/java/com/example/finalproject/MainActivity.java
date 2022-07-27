@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                     UserInfo.password = pass;
                     UserInfo.privilege = helper.checkPrivilege(user, pass);
                     if (UserInfo.privilege.equals("Admin") ){
-
                         Intent in = new Intent(view.getContext(), AdminPage.class);
                         startActivity(in);
                         finish();
