@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:background="@color/black"
     tools:context=".AdminPage">
 
     <TextView
@@ -19,7 +20,9 @@
         android:gravity="center"
         android:text="Username"
         android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold|italic"
+        android:textColor="@color/white"
+        />
 
     <EditText
         android:id="@+id/editName"
@@ -28,9 +31,12 @@
         android:layout_below="@+id/textView1"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:backgroundTint="@color/white"
         android:gravity="center_vertical|center"
         android:hint="Enter Name"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textStyle="bold" />
 
     <TextView
@@ -45,7 +51,9 @@
         android:hint="Enter Password"
         android:text="Password"
         android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold|italic"
+        android:textColor="@color/white"
+        />
 
     <EditText
         android:id="@+id/editPass"
@@ -55,12 +63,16 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="11dp"
+        android:backgroundTint="@color/white"
         android:gravity="center_vertical|center"
         android:hint="Enter Password"
         android:inputType="textPassword"
         android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/textView3"
@@ -73,7 +85,11 @@
         android:gravity="center"
         android:text="Select User Type"
         android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold|italic"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
+        />
 
     <RadioGroup
         android:id="@+id/usertype"
@@ -92,6 +108,7 @@
             android:textStyle="bold|italic"
             android:textSize="18sp"
             android:onClick="onRadioButtonClicked"
+            android:textColor="@color/white"
             />
         <RadioButton
             android:id="@+id/rad_user"
@@ -102,6 +119,7 @@
             android:textStyle="bold|italic"
             android:textSize="18sp"
             android:onClick="onRadioButtonClicked"
+            android:textColor="@color/white"
             />
     </RadioGroup>
 
@@ -115,6 +133,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="23dp"
+        android:backgroundTint="#4f4f4f"
         android:onClick="addUser"
         android:text="Add User"
         android:textSize="18sp"
@@ -131,23 +150,38 @@
         android:layout_marginTop="24dp"
         android:layout_marginRight="33dp"
         android:layout_marginBottom="-1dp"
-        android:text="View Data"
         android:onClick="viewdata"
+        android:text="View Data"
         android:textSize="18sp"
         android:textStyle="bold|italic"
-    />
+        android:backgroundTint="#4f4f4f"
+        />
 
-    <Button
-        android:text="Update"
+    <TextView
+        android:id="@+id/displaydata"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/viewdata"
+        android:layout_centerHorizontal="true"
+        android:text="DATA DISPLAY"
+        android:textSize="12sp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/white"
+        />
+
+    <Button
         android:id="@+id/button3"
-        android:textStyle="normal|bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/currentName"
-        android:layout_alignLeft="@+id/button4"
         android:layout_alignStart="@+id/button4"
-        android:layout_marginTop="13dp"
-        android:onClick="update"/>
+        android:layout_alignLeft="@+id/button4"
+        android:onClick="update"
+        android:text="Update"
+        android:textStyle="normal|bold"
+        android:backgroundTint="#4f4f4f"
+        />
+
 
     <EditText
         android:id="@+id/currentName"
@@ -158,10 +192,13 @@
         android:layout_alignParentLeft="true"
         android:layout_marginStart="7dp"
         android:layout_marginLeft="7dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Current Name"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="14sp"
         android:textStyle="bold|italic" />
 
@@ -174,9 +211,12 @@
         android:layout_alignLeft="@+id/currentName"
         android:layout_alignTop="@+id/button3"
         android:layout_marginTop="0dp"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="New Name"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="14sp"
         android:textStyle="bold|italic" />
 
@@ -189,11 +229,15 @@
         android:layout_alignParentLeft="true"
         android:layout_marginStart="7dp"
         android:layout_marginLeft="7dp"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="New Password"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="14sp"
         android:textStyle="bold|italic" />
+
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
@@ -204,9 +248,11 @@
         android:layout_marginEnd="21dp"
         android:layout_marginRight="21dp"
         android:layout_marginBottom="41dp"
-        android:text="Delete"
         android:onClick="delete"
-        android:textStyle="bold"/>
+        android:text="Delete"
+        android:textStyle="bold"
+        android:backgroundTint="#4f4f4f"
+        />
 
     <EditText
         android:id="@+id/deleteData"
@@ -217,18 +263,23 @@
         android:layout_alignParentLeft="true"
         android:layout_toStartOf="@+id/viewdata"
         android:layout_toLeftOf="@+id/viewdata"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Enter Name to Delete Data"
-        />
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
     <Button
         android:id="@+id/sign_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/deleteData"
-        android:text="Sign Out"
+        android:layout_marginLeft="5dp"
         android:onClick="admin_signout"
+        android:text="Sign Out"
+        android:backgroundTint="#4f4f4f"
         />
+
 
 
 

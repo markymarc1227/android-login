@@ -1,7 +1,9 @@
 package com.example.finalproject;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         username = (EditText) findViewById(R.id.user_edit);
         password = (EditText) findViewById(R.id.pass_edit);
         login = (Button) findViewById(R.id.login_btn);
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
                     UserInfo.username = user;
                     UserInfo.password = pass;
                     UserInfo.privilege = "superadmin";
+                    ToastNotif.message(getApplicationContext(),"Login Successful");
                     Intent in = new Intent(view.getContext(), AdminPage.class);
                     startActivity(in);
                     finish();
@@ -42,21 +46,20 @@ public class MainActivity extends AppCompatActivity {
                     UserInfo.password = pass;
                     UserInfo.privilege = helper.checkPrivilege(user, pass);
                     if (UserInfo.privilege.equals("Admin") ){
+                        ToastNotif.message(getApplicationContext(),"Login Successful");
                         Intent in = new Intent(view.getContext(), AdminPage.class);
                         startActivity(in);
                         finish();
                     }
                     else if (UserInfo.privilege.equals("User")){
+                        ToastNotif.message(getApplicationContext(),"Login Successful");
                         Intent in = new Intent(view.getContext(), UserPage.class);
                         startActivity(in);
                         finish();
                     }
-                    else {
-                        ToastNotif.message(getApplicationContext(),"User was found!");
-                    }
                 }
                 else {
-                    ToastNotif.message(getApplicationContext(),"Invalid Credentials");
+                    ToastNotif.message(getApplicationContext(),"Login Failed");
                 }
                 username.setText("");
                 password.setText("");
@@ -64,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
 
 
 

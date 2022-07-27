@@ -64,8 +64,6 @@ public class DbAdapter {
 
     public Boolean fetchUser(String username, String userpassword){
         SQLiteDatabase db = myhelper.getWritableDatabase();
-//        String[] columns = {DbHelper.NAME,DbHelper.PASSWORD};
-//        Cursor cursor =db.query(DbHelper.TABLE_NAME,columns,DbHelper.NAME + "= ? AND " + DbHelper.PASSWORD + "= ?" ,new String[] {username,userpassword},null,null,null);
         Cursor cursor = db.rawQuery("select * from Users where Name = ? and Password = ?", new String[] {username,userpassword});
         if (cursor.getCount()>0){
             return true;
@@ -76,8 +74,6 @@ public class DbAdapter {
 
     public String checkPrivilege(String username, String userpassword){
         SQLiteDatabase db = myhelper.getWritableDatabase();
-//        String[] columns = {DbHelper.NAME,DbHelper.PASSWORD,DbHelper.PRIVILEGE};
-//        Cursor cursor =db.query(DbHelper.TABLE_NAME,columns,DbHelper.NAME + "= ? AND " + DbHelper.PASSWORD + "= ?" ,new String[] {username,userpassword},null,null,null);
         Cursor cursor = db.rawQuery("select * from Users where Name = ? and Password = ?", new String[] {username,userpassword});
         StringBuffer buffer= new StringBuffer();
         while (cursor.moveToNext())   {
@@ -86,6 +82,7 @@ public class DbAdapter {
         }
         return buffer.toString();
     }
+
     public String getUserPrivilege(String username){
         SQLiteDatabase db = myhelper.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from Users where Name = ?", new String[] {username});
