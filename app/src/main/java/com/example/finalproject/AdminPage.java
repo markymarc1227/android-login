@@ -3,8 +3,10 @@ package com.example.finalproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
@@ -12,8 +14,8 @@ public class AdminPage extends AppCompatActivity {
     EditText name, pass, updateold, updatenew, newpass, delete;
     DbAdapter helper;
     RadioButton admin_btn;
-    String usertype = "";
-
+    String usertype = null;
+    Button admin_out;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class AdminPage extends AppCompatActivity {
         updatenew = (EditText) findViewById(R.id.newName);
         newpass = (EditText) findViewById(R.id.changePass);
         admin_btn = (RadioButton) findViewById(R.id.rad_admin);
+        admin_out = (Button) findViewById(R.id.sign_out);
 
         helper = new DbAdapter(this);
 
@@ -64,7 +67,7 @@ public class AdminPage extends AppCompatActivity {
         {
             ToastNotif.message(getApplicationContext(),"Enter Both Name and Password");
         }
-        if(usertype == null)
+        else if(usertype == null)
         {
             ToastNotif.message(getApplicationContext(),"Select a user type");
         }
@@ -94,11 +97,16 @@ public class AdminPage extends AppCompatActivity {
     public void delete( View view)
     {
         String uname = delete.getText().toString();
+        String user_privilege = helper.getUserPrivilege(uname);
         if(uname.isEmpty())
         {
             ToastNotif.message(getApplicationContext(),"Enter Data");
         }
+        else if(user_privilege.equals("Admin") && UserInfo.privilege.equals("Admin")){
+            ToastNotif.message(getApplicationContext(),"Only SuperAdmin can delete Admins.");
+        }
         else{
+
             int a= helper.delete(uname);
             if(a<=0)
             {
@@ -118,9 +126,13 @@ public class AdminPage extends AppCompatActivity {
         String u1 = updateold.getText().toString();
         String u2 = updatenew.getText().toString();
         String u3 = newpass.getText().toString();
+        String user_privilege = helper.getUserPrivilege(u1);
         if(u1.isEmpty() || u2.isEmpty() || u3.isEmpty())
         {
             ToastNotif.message(getApplicationContext(),"Enter Complete Data");
+        }
+        else if(user_privilege.equals("Admin") && UserInfo.privilege.equals("Admin")){
+            ToastNotif.message(getApplicationContext(),"Only SuperAdmin can update Admins.");
         }
         else
         {
@@ -138,5 +150,13 @@ public class AdminPage extends AppCompatActivity {
                 newpass.setText("");
             }
         }
+    }
+    public void admin_signout(View view) {
+        UserInfo.username="";
+        UserInfo.password="";
+        UserInfo.privilege="";
+        Intent in = new Intent(view.getContext(), MainActivity.class);
+        startActivity(in);
+        finish();
     }
 }

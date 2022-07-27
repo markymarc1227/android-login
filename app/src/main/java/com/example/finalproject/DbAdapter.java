@@ -86,6 +86,16 @@ public class DbAdapter {
         }
         return buffer.toString();
     }
+    public String getUserPrivilege(String username){
+        SQLiteDatabase db = myhelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from Users where Name = ?", new String[] {username});
+        StringBuffer buffer= new StringBuffer();
+        while (cursor.moveToNext())   {
+            @SuppressLint("Range") String privilege =cursor.getString(cursor.getColumnIndex(DbHelper.PRIVILEGE));
+            buffer.append(privilege);
+        }
+        return buffer.toString();
+    }
 
 //    public void findUser(String username, String userpassword)
 //    {

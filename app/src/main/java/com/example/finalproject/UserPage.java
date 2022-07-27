@@ -25,6 +25,9 @@ public class UserPage extends AppCompatActivity {
     }
 
     public void signOut(View view) {
+        UserInfo.username="";
+        UserInfo.password="";
+        UserInfo.privilege="";
         Intent in = new Intent(view.getContext(), MainActivity.class);
         startActivity(in);
         finish();
