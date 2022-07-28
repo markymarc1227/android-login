@@ -70,6 +70,16 @@ public class DbAdapter {
         }
     }
 
+    public Boolean checkDuplicates(String username){
+        SQLiteDatabase db = myhelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from Users where Name = ?", new String[] {username});
+        if (cursor.getCount()>0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public String checkPrivilege(String username, String userpassword){
         SQLiteDatabase db = myhelper.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from Users where Name = ? and Password = ?", new String[] {username,userpassword});
@@ -80,6 +90,7 @@ public class DbAdapter {
         }
         return buffer.toString();
     }
+
 
     public String getUserPrivilege(String username){
         SQLiteDatabase db = myhelper.getWritableDatabase();

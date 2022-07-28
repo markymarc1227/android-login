@@ -80,6 +80,9 @@ public class AdminPage extends AppCompatActivity {
         {
             ToastNotif.message(getApplicationContext(),"Select a user type");
         }
+        else if(helper.checkDuplicates(add_name)){
+            ToastNotif.message(getApplicationContext(),"Duplicate Username.");
+        }
         else
         {
             long id = helper.insertData(add_name,add_pass,add_usertype);
